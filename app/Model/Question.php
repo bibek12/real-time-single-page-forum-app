@@ -10,7 +10,11 @@ use App\Model\Category;
 class Question extends Model
 {
     //
+    protected $guarded=[];
 
+    public function getRouteKeyName(){
+        return 'slug';
+    }
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -21,5 +25,13 @@ class Question extends Model
 
     public function categories(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function getPathAttribute(){
+        return asset("api/quetion/$this->slug");
+    }
+
+    public function getCreatedDateAttribute(){
+        return $this->created_at->diffForHumans();
     }
 }
