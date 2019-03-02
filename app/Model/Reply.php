@@ -10,6 +10,7 @@ use App\Model\Like;
 class Reply extends Model
 {
     //
+    protected $guarded=[];
     public function user(){
 
         return $this->belongsTo(User::class);
@@ -21,6 +22,10 @@ class Reply extends Model
 
     public function likes(){
         return $this->hasMany(Like::class);
+    }
+
+    public function getCreatedDateAttribute(){
+        return $this->created_at->diffForHUmans();
     }
 
 }
