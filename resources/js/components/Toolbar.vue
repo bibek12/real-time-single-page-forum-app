@@ -1,8 +1,9 @@
 <template>
   <v-toolbar>
-   
-    <v-toolbar-title>Forum</v-toolbar-title>
+   <v-toolbar-title>Forum</v-toolbar-title>
     <v-spacer></v-spacer>
+     <app-notification v-if="loggedIn"></app-notification>
+   
     <div class="hidden-sm-and-down">
       <router-link v-for="item in items.filter(item=>item.show)"
       :key="item.title"
@@ -18,9 +19,12 @@
 </template>
 
 <script>
+import AppNotification from './AppNotification'
 export default {
+  components:{AppNotification},
   data(){
     return{
+        loggedIn:User.loginIn(),
         items:[
           {title:'Forum',to:'/login',show:true},
           {title:'Ask Question',to:'/askquestion',show:User.loginIn()},
