@@ -24,7 +24,7 @@ export default {
         items:[
           {title:'Forum',to:'/login',show:true},
           {title:'Ask Question',to:'/askquestion',show:User.loginIn()},
-          {title:'Category',to:'/category',show:User.loginIn()},
+          {title:'Category',to:'/category',show:User.admin()},
           {title:'Login',to:'/login',show:!User.loginIn()},
           {title:'Logout',to:'logout',show:User.loginIn()}
         ]
