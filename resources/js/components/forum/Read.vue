@@ -4,8 +4,14 @@
          <div v-else>
              <show-question :question=question v-if="question"></show-question> 
         </div>
-        <replies :question="question"></replies>
-        <create-reply :questionSlug="question.slug"></create-reply>
+        <v-container>
+                 <replies :question="question"></replies>
+                <create-reply v-if="loggedIn"  :questionSlug="question.slug"></create-reply>
+                <div class="mt-4" v-else>
+                    <router-link to="/login">Login to reply</router-link>
+                </div>
+        </v-container>
+       
     </div>
    
 </template>
@@ -40,6 +46,11 @@ export default {
         getQuestion(){
              axios.get(`/api/question/${this.$route.params.slug}`)
             .then(res=>this.question=res.data.data)
+        }
+    },
+    computed:{
+        loggedIn(){
+            return User.loginIn()
         }
     }
 }
