@@ -50,6 +50,7 @@ export default {
 
         Echo.private('App.User.' + User.id())
             .notification((notification) => {
+                
             this.replyCount++
               });
 

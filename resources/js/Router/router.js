@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+import Parallex from '../components/Parallex'
 import Logout from '../components/login/Logout'
 import Login from '../components/login/Login'
 import SignUp from '../components/login/SignUp'
@@ -12,6 +13,7 @@ import Create from '../components/forum/create'
 import CreateCategory from '../components/category/create'
 
 const routes = [
+    { path: '/', component: Parallex },
     { path: '/login', component: Login },
     { path: '/signup', component: SignUp },
     { path: '/forum', component: Forum,name:'forum' },
